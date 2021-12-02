@@ -28,13 +28,13 @@ class ExplicitWaitTest(unittest.TestCase):
         account.click()   
 
     def test_create_new_costumer(self):
-        # Le pedimos a driver que encuentre y de click en el elemento que en su link tiene el texto 'ACCOUT'
+        # Le pedimos a driver que encuentre y de click en el elemento que en su link tiene el texto 'ACCOUT'    
         self.driver.find_element_by_xpath('//*[@id="header"]/div/div[2]/div/a/span[2]').click()    
 
         # Le pedimos a webdriverwait que sea self.driver, durante un maximo de 10 segundos, hasta que se cumpla la condición
         # esperada, en este caso que el elemento my account sea visible en el sitio web, NOTA: el parametro debe estar escrito
         # de la misma manera que en el sitio web 
-        my_account = WebDriverWait(self.driver, 10).until(EC.visibility_of_all_elements_located((By.LINK_TEXT, 'My Account')))
+        my_account = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located((By.LINK_TEXT, 'My Account')))
         #Ingresamos a my account
         my_account.click()
 
@@ -48,7 +48,7 @@ class ExplicitWaitTest(unittest.TestCase):
         create_account_button.click()
 
         # Verificamos que la página web sea la correcta validando el nombre de la misma.
-        WebDriverWait(self.driver, 10).until(EC.title_contains('Create New Coustomer Account'))
+        WebDriverWait(self.driver, 10).until(EC.title_contains('Create New Customer Account'))
 
     def tearDown(self):
         self.driver.close()
